@@ -1,4 +1,4 @@
-package pikachu;
+
 public class pikachu {
 	public static void main(String[] args) {
 		System.out.println("Pikachu welcomes you to the world of Pokemon!");
