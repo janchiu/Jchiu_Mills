@@ -34,11 +34,9 @@ public class Calculate {
 		return((number/360)*pi);
 	}
 	
-	public static double discriminant(double number1, double number2, double number3) {
-		return((number2*number2)-(4*number1*number3));
+	public static double discriminant(double nunmber1, double number2, double number3) {
+		return()
 				
-	public static int toImproperFrac(int number1, int number2, int number3) {
-		return(((number1*number3+number2)/number3);
+	public static int toMixedNum(int number1, int number2, int number3)
+		return()
 	}
-	
-	public static int foil(int number1, int number2, int number3, int number4)
