@@ -36,35 +36,9 @@ public class Calculate {
 	
 	public static double discriminant(double number1, double number2, double number3) {
 		return((number2*number2)-(4*number1*number3));
-	}
 				
-	public static int toImproperFrac(int a, int b, int c) {
-		int numerator = ((a*b)-c);
-		System.out.println( numerator + "/" + c );
-		return numerator;
+	public static int toImproperFrac(int number1, int number2, int number3) {
+		return(((number1*number3+number2)/number3);
 	}
 	
-	public static double toMixedNum(int number1, int number2){
-		int wholeNumber
-		return(string)
-	}
-	public static string foil (int a, int b, int c, int d, string){
-		return((a*c*x*x)+(a))
-	}
-	
-	public static int foil(int number1, int number2, int number3, int number4) {
-		return()
-	}
-	
-	public static boolean isDivisbleBy(int a, int b){
-		int number1 = (a/b);
-		int number2= (b/a);
-		int newnumber = (number1+number2); 
-		
-	if(newnumber == 0){ 
-			return true;
-		}else{ 
-			return false;
-		}
-	}
-	
+	public static int foil(int number1, int number2, int number3, int number4)
