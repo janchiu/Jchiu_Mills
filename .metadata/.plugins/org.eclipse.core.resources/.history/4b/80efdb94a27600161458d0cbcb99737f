@@ -93,14 +93,6 @@ public class Calculate {
 		}
 	}
 	
-	public static double min(double a) {
-		
-	}
-	
 	public static double round2 (double number1) {
-		int   
-	}
-	
-	public static double exponent( double a, int b) {
-		int 
+		int  
 	}
