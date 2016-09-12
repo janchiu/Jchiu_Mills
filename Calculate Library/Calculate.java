@@ -10,15 +10,16 @@ public class Calculate {
 	public static double square(double number) {
 		return(number*number);
 	}
-
 }
 
-	public static double cube(double number) {
+	
+public static double cube(double number) {
 		return(number*number*number);
-	}
-	public static double average(double number1, double number2) {
+}
+	
+public static double average(double number1, double number2) {
 		return((number1+number2)/2);
-	}
+}
 	
 	public static double average(double number1, double number2, double number3) {
 		return((number1+number2+number3)/3);
@@ -63,7 +64,7 @@ public class Calculate {
 		
 	if(newnumber == 0){ 
 			return true;
-		}else{ 
+		}else { 
 			return false;
 			}
 	public static double absValue(double a) {
@@ -101,6 +102,22 @@ public class Calculate {
 		int   
 	}
 	
-	public static double exponent( double a, int b) {
-		int 
+	public static double exponent( double base, int power) {
+			double answer= 1;
+				answer = answer*base;
+				for (int i=1;i<= power); {
+					return ( answer );
+				}
+	}
+	
+	public static int factorial (int a); 
+		int answer = 1
+		for(int i= 1;i <= a;i++);
+		answer *= i; 
+			}return answer;
+		}
+		
+	
+	public static boolean isPrime (int a) {
+		if( for(int i = 1; i <= )
 	}

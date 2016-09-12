@@ -65,6 +65,42 @@ public class Calculate {
 			return true;
 		}else{ 
 			return false;
+			}
+	public static double absValue(double a) {
+		if (a > 0) {
+			return a * (1.0);
+		} else {
+			return a * (-1.0);
 		}
 	}
 	
+	public static boolean max(double a,double b) {
+		if (a>b) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+				
+	public static double max(double a,double b, double c) {
+		
+		
+	public static boolean min(int a, int b) {
+		if (a > b){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static double min(double a) {
+		
+	}
+	
+	public static double round2 (double number1) {
+		int   
+	}
+	
+	public static double exponent( double a, int b) {
+		int 
+	}
