@@ -12,14 +12,13 @@ public class Calculate {
 	}
 }
 
-	
-public static double cube(double number) {
+	public static double cube(double number) {
 		return(number*number*number);
-}
+	}
 	
-public static double average(double number1, double number2) {
+	public static double average(double number1, double number2) {
 		return((number1+number2)/2);
-}
+	}
 	
 	public static double average(double number1, double number2, double number3) {
 		return((number1+number2+number3)/3);
@@ -49,14 +48,11 @@ public static double average(double number1, double number2) {
 		int wholeNumber
 		return(string)
 	}
-	public static string foil (int a, int b, int c, int d, string){
-		return((a*c*x*x)+(a))
+	public static string foil (int a, int b, int c, int d, String e){
+		System.out.println();
+		return((a*c*x^2)+(a*d*x)+(b*c*x)+(b*c)
 	}
-	
-	public static int foil(int number1, int number2, int number3, int number4) {
-		return()
-	}
-	
+		
 	public static boolean isDivisbleBy(int a, int b){
 		int number1 = (a/b);
 		int number2= (b/a);
@@ -105,19 +101,33 @@ public static double average(double number1, double number2) {
 	public static double exponent( double base, int power) {
 			double answer= 1;
 				answer = answer*base;
-				for (int i=1;i<= power); {
+				for (int i=1;i<= power;i++); {
 					return ( answer );
 				}
 	}
-	
-	public static int factorial (int a); 
-		int answer = 1
-		for(int i= 1;i <= a;i++);
-		answer *= i; 
-			}return answer;
-		}
+
+	public static int factorial (int n) {
+		int product=1;
+				for(int i = 2; i <= n; i++){
+					product = product*i;
+				}
+				return product;
+				for (int i=0; i>=0;i++) {
+					System.out.println( i + "!=" + factorial(i));
+				}
+	}
 		
-	
 	public static boolean isPrime (int a) {
-		if( for(int i = 1; i <= )
+		for(int i = 2; a < i;i++ ) {
+			if(a%i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static 
+	
+	public static int gcf(int a, int b) {
+		if 
 	}
