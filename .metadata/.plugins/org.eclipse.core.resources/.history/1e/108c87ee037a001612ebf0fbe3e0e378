@@ -7,9 +7,10 @@
  *
  */
 public class Calculate {
-	public static int square(int number) {
+	public static double square(double number) {
 		return(number*number);
 	}
+}
 
 	public static double cube(double number) {
 		return(number*number*number);
@@ -25,12 +26,12 @@ public class Calculate {
 	
 	public static double toDegrees(double number) {
 		double pi= 3.14159;
-		return((number*180)/pi);
+		return((number*360)/pi);
 	}
 	
 	public static double toRadians(double number) {
 		double pi= 3.14159;
-		return((number/180)*pi);
+		return((number/360)*pi);
 	}
 	
 	public static double discriminant(double number1, double number2, double number3) {
@@ -38,21 +39,20 @@ public class Calculate {
 	}
 				
 	public static int toImproperFrac(int a, int b, int c) {
-		int numerator = ((a*c)+b);
-		String improperfrac = (numerator + "/" + c);
-		return improperfrac;
+		int numerator = ((a*b)-c);
+		System.out.println( numerator + "/" + c );
+		return numerator;
 	}
 	
 	public static String toMixedNum(int number1, int number2){
 		return("\"" + number1/number2 + "_" + number1%number2 + "/" + number2);
 	}
 	
-	/*public static String foil (int a, int b, int c, int d, String e){
+	public static String foil (int a, int b, int c, int d, String e){
 		System.out.println();
 		return((a*c*n*n)+(a*d*n)+(b*c*n)+(b*c));
 	}
-	*/
-	
+		
 	public static boolean isDivisibleBy(int a, int b){
 		int number1 = (a/b);
 		int number2= (b/a);
@@ -72,7 +72,7 @@ public class Calculate {
 		}
 	}
 	
-	public static int max (int a,int b) {
+	public static double max1 (double a,double b) {
 		if (a>b) {
 			return a;
 		}else {
@@ -80,7 +80,7 @@ public class Calculate {
 		}
 	}
 				
-	public static double max(double a,double b, double c) {
+	public static boolean max2(double a,double b, double c) {
 		if (a>b) { 
 			return a;
 		}
@@ -90,20 +90,16 @@ public class Calculate {
 		}
 	}
 		
-	public static int min(int a, int b) {
+	public static boolean min(int a, int b) {
 		if (a > b) {
-			return a;
+			return true;
 		}else {
-			return b;
+			return false;
 		}
 	}
 	
-	public static double round2(double number1) {
-		double a = (number1 + 0.005); 
-		a = a*100.0; 
-		a = (int)a;
-		a = a / 100.0;
-		return a; 
+	public static double round2 (double number1) {
+		return (number1 + 0.05);   
 	}
 	
 	public static double exponent( double base, int power) {
@@ -116,10 +112,13 @@ public class Calculate {
 
 	public static int factorial (int n) {
 		int product=1;
-		for(int i = n; i >1; i--){
-			product = product*i;
-		}
-		return product;
+				for(int i = 2; i <= n; i++){
+					product = product*i;
+				}
+				return product;
+				for (int i=0; i>=0;i++) {
+					System.out.println( i + "!=" + factorial(i));
+				}
 	}
 		
 	public static boolean isPrime (int a) {
@@ -132,24 +131,15 @@ public class Calculate {
 	}
 
 	public static int gcf(int a, int b) {
-		int smallnum = Calculate.min(a, b);
-		int bignum = Calculate.max(a,b);
-		int cf = smallnum;
-		if(Calculate.isDivisibleBy(bignum,cf)) {
-			return cf;
-		} 
-		cf = cf-1;
-		while(cf > 1) {
-			if(Calculate.isDivisibleBy(smallnum,cf)) {
-				if(Calculate.isDivisibleBy(bignum, cf))
-					return cf;
-			} 
-			cf--;	
+		int c = Math.min(a, b); 
+		for(int i = 2; i <= c;i++){ 
+			int d = Calculate.isDivisibleBy(c/i);
+			if()
+				return(answer);
+			}
 		}
-		return 1;
+		
 	}
-}	
-	/*public static double sqrt(double a); 
-		for
-	*/
 	
+	public static double sqrt(double a); 
+		for

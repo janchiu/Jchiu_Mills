@@ -39,8 +39,7 @@ public class Calculate {
 				
 	public static int toImproperFrac(int a, int b, int c) {
 		int numerator = ((a*c)+b);
-		String improperfrac = (numerator + "/" + c);
-		return improperfrac;
+		return numerator/c;
 	}
 	
 	public static String toMixedNum(int number1, int number2){

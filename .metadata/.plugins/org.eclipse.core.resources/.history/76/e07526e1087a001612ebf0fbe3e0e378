@@ -38,9 +38,9 @@ public class Calculate {
 	}
 				
 	public static int toImproperFrac(int a, int b, int c) {
-		int numerator = ((a*c)+b);
-		String improperfrac = (numerator + "/" + c);
-		return improperfrac;
+		int numerator = ((a*b)-c);
+		System.out.println( numerator + "/" + c );
+		return numerator;
 	}
 	
 	public static String toMixedNum(int number1, int number2){
@@ -98,12 +98,8 @@ public class Calculate {
 		}
 	}
 	
-	public static double round2(double number1) {
-		double a = (number1 + 0.005); 
-		a = a*100.0; 
-		a = (int)a;
-		a = a / 100.0;
-		return a; 
+	public static double round2 (double number1) {
+		return (number1 + 0.05);   
 	}
 	
 	public static double exponent( double base, int power) {
