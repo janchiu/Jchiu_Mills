@@ -44,11 +44,10 @@ public class Calculate {
 		return numerator;
 	}
 	
-	public static double toMixedNum(int number1, int number2){
-		int wholeNumber
-		return(string)
+	public static String toMixedNum(int number1, int number2){
+		return(number1/number2+ "_" +  )
 	}
-	public static string foil (int a, int b, int c, int d, String e){
+	public static String foil (int a, int b, int c, int d, String e){
 		System.out.println();
 		return((a*c*x^2)+(a*d*x)+(b*c*x)+(b*c)
 	}
@@ -71,16 +70,18 @@ public class Calculate {
 		}
 	}
 	
-	public static boolean max(double a,double b) {
+	public static double max1 (double a,double b) {
 		if (a>b) {
-			return true;
+			return a;
 		}else {
-			return false;
+			return b;
 		}
 	}
 				
-	public static double max(double a,double b, double c) {
-		
+	public static boolean max(double a,double b, double c) {
+		if (a>b) { 
+			return a
+		}
 		
 	public static boolean min(int a, int b) {
 		if (a > b){
@@ -90,12 +91,8 @@ public class Calculate {
 		}
 	}
 	
-	public static double min(double a) {
-		
-	}
-	
 	public static double round2 (double number1) {
-		int   
+		   
 	}
 	
 	public static double exponent( double base, int power) {
@@ -123,11 +120,11 @@ public class Calculate {
 				return false;
 			}
 		}
-		return true;
+		return true;	
 	}
-	
-	public static 
-	
+
 	public static int gcf(int a, int b) {
-		if 
+		while(a != 0);
+			int c = a; 
+			
 	}
