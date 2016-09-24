@@ -37,7 +37,7 @@ public class Calculate {
 		return((number2*number2)-(4*number1*number3));
 	}
 				
-	public static int toImproperFrac(int a, int b, int c) {
+	public static String toImproperFrac(int a, int b, int c) {
 		int numerator = ((a*c)+b);
 		String improperfrac = (numerator + "/" + c);
 		return improperfrac;
@@ -49,7 +49,7 @@ public class Calculate {
 	
 	/*public static String foil (int a, int b, int c, int d, String e){
 		System.out.println();
-		return((a*c*n*n)+(a*d*n)+(b*c*n)+(b*c));
+		return((a*c)+"x^2"+"+"((a*d*)+(b*c*))+"x"+"+"+(b*c));
 	}
 	*/
 	
@@ -147,9 +147,12 @@ public class Calculate {
 			cf--;	
 		}
 		return 1;
-	}
-}	
-	/*public static double sqrt(double a); 
-		for
-	*/
+	}	
+	public static double sqrt(double a) {
+		a= Calculate.round2(a);
+		for(int i = 0; i<=n; i++) {
+			
+		}
+		
+	
 	
