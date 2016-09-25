@@ -3,7 +3,10 @@
  */
 
 /**
- * @author APCS1
+  APCS1//Janson Chiu
+//Period 1
+//Due: 9/24/16
+//Math Library
  *
  */
 public class Calculate {
@@ -44,26 +47,26 @@ public class Calculate {
 	}
 	
 	public static String toMixedNum(int number1, int number2){
-		return("\"" + number1/number2 + "_" + number1%number2 + "/" + number2);
+		return(number1/number2 + "_" + number1%number2 + "/" + number2);
 	}
 	
-	/*public static String foil (int a, int b, int c, int d, String e){
-		System.out.println();
-		return((a*c)+"x^2"+"+"((a*d*)+(b*c*))+"x"+"+"+(b*c));
+	public static String foil (int a, int b, int c, int d, String n){
+		return((a*c)+"n^2"+ "+" +(((a*d)+(b*c)))+"n"+ "+"+(b*d));
 	}
-	*/
 	
 	public static boolean isDivisibleBy(int a, int b){
-		int number1 = (a/b);
-		int number2= (b/a);
-		int newnumber = (number1+number2); 
-		
-	if(newnumber == 0){ 
+	
+		if (b == 0) {
+			throw new IllegalArgumentException ("Cannot be divisible by 0");
+		}		
+		if(a%b == 0){ 
 			return true;
 		}else { 
 			return false;
-			}
+		}
+
 	}
+	
 	public static double absValue(double a) {
 		if (a > 0) {
 			return a * (1.0);
@@ -80,16 +83,19 @@ public class Calculate {
 		}
 	}
 				
-	public static double max(double a,double b, double c) {
-		if (a>b) { 
-			return a;
-		}
-		else
-		{
-			return b; 
-		}
+	public static double max(double a, double b, double c){
+		  if(a>b && b>c){
+			  return a;
+		  }
+
+		  else if(a>b && b>c){
+			  return b;
+		  }
+		  else{
+			  return c;
+		  }
 	}
-		
+	
 	public static int min(int a, int b) {
 		if (a > b) {
 			return a;
@@ -107,19 +113,34 @@ public class Calculate {
 	}
 	
 	public static double exponent( double base, int power) {
-			double answer= 1;
-				answer = answer*base;
-				for (int i=1;i<= power;i++); {
-					return ( answer );
-				}
-	}
+		if (power<0) {
+			throw new IllegalArgumentException ("Cannot be raised a number to the negative power");
+		}
+			if (power == 0) {
+				return 1;
+			}
+			if (power == 1) {
+				return base;
+			}
+			double previous = base;
+			while (power > 1) {
+				previous = previous * base;
+				power--;
+			}
+			return previous;
+		}
 
 	public static int factorial (int n) {
+		if (n<0) {
+			throw new IllegalArgumentException ("Cannot get the factorial"
+					+ " of a negative number");
+		}
 		int product=1;
 		for(int i = n; i >1; i--){
 			product = product*i;
 		}
 		return product;
+		
 	}
 		
 	public static boolean isPrime (int a) {
@@ -131,28 +152,61 @@ public class Calculate {
 		return true;	
 	}
 
-	public static int gcf(int a, int b) {
-		int smallnum = Calculate.min(a, b);
-		int bignum = Calculate.max(a,b);
-		int cf = smallnum;
-		if(Calculate.isDivisibleBy(bignum,cf)) {
-			return cf;
-		} 
-		cf = cf-1;
-		while(cf > 1) {
-			if(Calculate.isDivisibleBy(smallnum,cf)) {
-				if(Calculate.isDivisibleBy(bignum, cf))
-					return cf;
-			} 
-			cf--;	
+	public static int gcf(int a, int b){
+		int gcf = 1;
+		if(a > b){
+			for(int i = b; i >= 1; i--){
+				if(a % i == 0 && b % i == 0){
+					return i;
+				}
+			}
+		} else {
+			for(int j = a; j >=1; j--){
+				if(a % j == 0 && b % j == 0){
+					return j;
+				}
+			}
 		}
-		return 1;
-	}	
+		return gcf;
+	}
+	
 	public static double sqrt(double a) {
-		a= Calculate.round2(a);
-		for(int i = 0; i<=n; i++) {
-			
+		if (a<0) {
+			throw new IllegalArgumentException ("Cannot square root a negative number");
 		}
 		
+		a = Calculate.round2(a);
+			double t;
+			double squareRoot = a / 2.0;
+			do {
+				t = squareRoot;
+				squareRoot = (t + (a / t)) / 2;
+			} while ((t - squareRoot) != 0);
+		 
+			return squareRoot;
+			
+	}
 	
-	
+	public static String quadForm(int a, int b, int c){
+		double rootone;
+		double roottwo;
+		double discriminant = Calculate.discriminant(a, b, c);
+		if (discriminant < 0){
+			return "no real roots";
+		}
+		else if (discriminant == 0){
+			rootone = ((-b + discriminant)/(2*a));
+			return "Root = " + rootone;
+		}
+		else {
+			rootone = Calculate.round2((-b - discriminant)/(2*a));
+			roottwo = Calculate.round2((-b + discriminant)/(2*a));
+			if(rootone>roottwo){
+				return(roottwo+ " and "+ rootone);
+			}
+			else {
+				return(rootone+ " and "+ roottwo);
+			}
+		}
+	}
+}
