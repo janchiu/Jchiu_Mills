@@ -64,7 +64,6 @@ public class Calculate {
 		}else { 
 			return false;
 		}
-
 	}
 	
 	public static double absValue(double a) {
