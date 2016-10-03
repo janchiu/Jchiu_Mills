@@ -17,7 +17,7 @@ public class ProcessingNumbers {
 		int min;
 		int maxEven;
 		int totalEven = 0;
-		for(int count = 0; count < totalNumber;count++) {
+		for(int count = 0; count <= totalNumber;count++) {
 			System.out.println("Enter the # to add");
 			int nextNumber= userInput.nextInt();
 			max = nextNumber;

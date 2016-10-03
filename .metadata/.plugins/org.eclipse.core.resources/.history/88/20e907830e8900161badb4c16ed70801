@@ -3,10 +3,9 @@
  */
 
 /**
- * @author Janson = Collab Exercise 
+ * @author janson
  *
 */
-
 import java.util.*;
 public class ProcessingNumbers {
 	public static void main(String[] args) {
@@ -17,8 +16,8 @@ public class ProcessingNumbers {
 		int min;
 		int maxEven;
 		int totalEven = 0;
-		for(int count = 0; count < totalNumber;count++) {
-			System.out.println("Enter the # to add");
+		for(int count = 0; count <totalNumber;count++) {
+			System.out.println("Enter the next # to add");
 			int nextNumber= userInput.nextInt();
 			max = nextNumber;
 			min = nextNumber;
