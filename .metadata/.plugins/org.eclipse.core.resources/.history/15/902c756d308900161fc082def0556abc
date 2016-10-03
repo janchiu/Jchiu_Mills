@@ -1,6 +1,12 @@
-// Janson Chiu 
-// Collab Exercise 10/2/16
-// 1. Accepts as user input a string of numbers, 2. Prints the smallest and largest of all the numbers supplied by the user. 3. Print the sum of all the even numbers the user typed along with the largest even number typed. 
+/**
+ * 
+ */
+
+/**
+ * @author Janson = Collab Exercise 
+ *
+*/
+
 import java.util.*;
 public class ProcessingNumbers {
 	public static void main(String[] args) {

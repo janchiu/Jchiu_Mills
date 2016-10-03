@@ -1,19 +1,27 @@
-// Janson Chiu 
-// Collab Exercise 10/2/16
-// 1. Accepts as user input a string of numbers, 2. Prints the smallest and largest of all the numbers supplied by the user. 3. Print the sum of all the even numbers the user typed along with the largest even number typed. 
+/**
+ * 
+ */
+
+/**
+ * @author Janson = Collab Exercise 
+ *
+*/
+
 import java.util.*;
 public class ProcessingNumbers {
 	public static void main(String[] args) {
+		int max=0;
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("How many numbers do you want to use?");
 		int totalNumber = userInput.nextInt();
-		int max = Integer.MIN_VALUE; 
-		int min = Integer.MAX_VALUE;
-		int maxEven;
-		int totalEven =0;
+		int min = userInput.nextInt();
+		int maxEven = 0;
+		int totalEven = 0;
 		for(int count = 0; count <totalNumber;count++) {
 			System.out.println("Enter the next # to add");
 			int nextNumber= userInput.nextInt();
+			max = nextNumber;
+			min = nextNumber;
 			if (nextNumber > max){
 				max = nextNumber;
 			}
@@ -35,6 +43,5 @@ public class ProcessingNumbers {
 		userInput.close();
 	}
 }
-
 
 
