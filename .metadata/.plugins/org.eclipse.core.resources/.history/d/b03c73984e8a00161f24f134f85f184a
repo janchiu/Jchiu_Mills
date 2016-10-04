@@ -21,6 +21,7 @@ public class ProcessingNumbers {
 				min = nextNumber;
 			}
 			if (nextNumber % 2 == 0){
+				maxEven = nextNumber;
 				totalEven += nextNumber;
 				if (nextNumber > maxEven){
 					maxEven = nextNumber;

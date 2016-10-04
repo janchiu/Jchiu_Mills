@@ -21,6 +21,7 @@ public class ProcessingNumbers {
 				min = nextNumber;
 			}
 			if (nextNumber % 2 == 0){
+				maxEven = nextNumber;
 				totalEven += nextNumber;
 				if (nextNumber > maxEven){
 					maxEven = nextNumber;
@@ -32,7 +33,8 @@ public class ProcessingNumbers {
 		System.out.println("The sum of all even number is " + totalEven );
 		System.out.println("The largest even number is "+ maxEven);
 		}
-	
+	}
+}
 }
 
 

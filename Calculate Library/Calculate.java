@@ -10,28 +10,28 @@
  *
  */
 public class Calculate {
-	public static int square(int number) {
+	public static int square(int number) { 	//The method returns the square of the value passed//
 		return(number*number);
 	}
 
-	public static double cube(double number) {
+	public static double cube(double number) { //returns the cube of the value passed//
 		return(number*number*number);
 	}
 	
-	public static double average(double number1, double number2) {
+	public static double average(double number1, double number2) { // The method returns of the average of the two doubles passed//
 		return((number1+number2)/2);
 	}
 	
-	public static double average(double number1, double number2, double number3) {
+	public static double average(double number1, double number2, double number3) { // This method would return the average of three doubles passed//
 		return((number1+number2+number3)/3);
 	}
 	
-	public static double toDegrees(double number) {
+	public static double toDegrees(double number) {//This method converts from Radians to Degrees//
 		double pi= 3.14159;
 		return((number*180)/pi);
 	}
 	
-	public static double toRadians(double number) {
+	public static double toRadians(double number) { //This method converts degrees to 
 		double pi= 3.14159;
 		return((number/180)*pi);
 	}
