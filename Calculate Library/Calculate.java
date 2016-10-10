@@ -31,12 +31,12 @@ public class Calculate {
 		return((number*180)/pi);
 	}
 	
-	public static double toRadians(double number) { //This method converts degrees to 
+	public static double toRadians(double number) { //This method converts from degrees to Radians //
 		double pi= 3.14159;
 		return((number/180)*pi);
 	}
 	
-	public static double discriminant(double number1, double number2, double number3) {
+	public static double discriminant(double number1, double number2, double number3) { // finds the discriminant of three doubles // 
 		return((number2*number2)-(4*number1*number3));
 	}
 				
