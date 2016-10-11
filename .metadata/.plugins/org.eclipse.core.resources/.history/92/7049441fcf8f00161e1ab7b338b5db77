@@ -14,40 +14,24 @@ public class Magpie2 {
 	public String getResponse(String statement) {
 		String response = "";
 		if (statement.indexOf("no") >= 0) {
-			response = "Why not?";
+			response = "Why so negative?";
 		} else if (statement.indexOf("mother") >= 0
 				|| statement.indexOf("father") >= 0
-				|| statement.indexOf("sister") >= 0 ) {
+				|| statement.indexOf("sister") >= 0
+				|| statement.indexOf("brother") >= 0) {
 			response = "Tell me more about your family.";
-		} else if (statement.indexOf("brother") >= 0 ) {
-			response = "your brother is a nice person";
-		} else if (statement.indexOf("friend") >= 0) {
-			response = "Tell me more about your friend";
 		} else {
 			response = getRandomResponse();
 		}
 		return response;
 	}
-	
-	public String trim(String statement) { 
-		String response = "";
-		if (statement.length() == 0) { 
-			response = "Say something, please";
-		} else { if 
-			
-			
-		}
-	}
 
 	public String teacherResponse(String statement) {
 		String response = "";
-		if(statement.indexOf("Mr.")>= 0) {
+		if(statement.indexof("Mr.")>= 0) {
 			response = "He sounds like a good teacher.";
-		} else if (statement.indexOf("Mrs.")>=0) {
+		} else if (statement.indexOf("Mrs.")>=0)
 			response = "She sounds like a good teacher.";
-		} else if (statement.indexOf("Ms.") >=0) {
-			response = "She sounds like a good teacher.";
-		}
 	}
 	/**
 	 * Pick a default response to use if nothing else fits.
