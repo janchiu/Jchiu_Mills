@@ -14,7 +14,7 @@ public class Calculate {
 		return(number*number);
 	}
 
-	public static double cube(double number) { //This method returns the cube of the value passed//
+	public static double cube(double number) { //returns the cube of the value passed//
 		return(number*number*number);
 	}
 	
@@ -26,7 +26,7 @@ public class Calculate {
 		return((number1+number2+number3)/3);
 	}
 	
-	public static double toDegrees(double number) {//This method converts from Radians to Degrees //
+	public static double toDegrees(double number) {//This method converts from Radians to Degrees//
 		double pi= 3.14159;
 		return((number*180)/pi);
 	}
@@ -40,21 +40,21 @@ public class Calculate {
 		return((number2*number2)-(4*number1*number3));
 	}
 				
-	public static String toImproperFrac(int a, int b, int c) { // This method converts mixed number into an improper fraction //
+	public static String toImproperFrac(int a, int b, int c) {
 		int numerator = ((a*c)+b);
 		String improperfrac = (numerator + "/" + c);
 		return improperfrac;
 	}
 	
-	public static String toMixedNum(int number1, int number2){ // This method converts an improper fraction into a mixed number //
+	public static String toMixedNum(int number1, int number2){
 		return(number1/number2 + "_" + number1%number2 + "/" + number2);
 	}
 	
-	public static String foil (int a, int b, int c, int d, String n){ // This method converts a binomial multiplication of the form (ax+d)(cx+d) into a mixed number //
+	public static String foil (int a, int b, int c, int d, String n){
 		return((a*c)+"n^2"+ "+" +(((a*d)+(b*c)))+"n"+ "+"+(b*d));
 	}
 	
-	public static boolean isDivisibleBy(int a, int b){ // This method determines whether or not one integer is evenly divisible by another integer //
+	public static boolean isDivisibleBy(int a, int b){
 	
 		if (b == 0) {
 			throw new IllegalArgumentException ("Cannot be divisible by 0");
@@ -66,7 +66,7 @@ public class Calculate {
 		}
 	}
 	
-	public static double absValue(double a) { // This method returns the absolute value of the double passed //
+	public static double absValue(double a) {
 		if (a > 0) {
 			return a * (1.0);
 		} else {
@@ -74,7 +74,7 @@ public class Calculate {
 		}
 	}
 	
-	public static int max (int a,int b) { // This method returns the larger of the two integers passed //
+	public static int max (int a,int b) {
 		if (a>b) {
 			return a;
 		}else {
@@ -82,7 +82,7 @@ public class Calculate {
 		}
 	}
 				
-	public static double max(double a, double b, double c){ // This method returns the largest numbers of three doubles //
+	public static double max(double a, double b, double c){
 		  if(a>b && b>c){
 			  return a;
 		  }
@@ -95,7 +95,7 @@ public class Calculate {
 		  }
 	}
 	
-	public static int min(int a, int b) { // This method returns the smaller of the two integers passed // 
+	public static int min(int a, int b) {
 		if (a > b) {
 			return a;
 		}else {
@@ -103,7 +103,7 @@ public class Calculate {
 		}
 	}
 	
-	public static double round2(double number1) { // This method rounds a double to 2 decimal places // 
+	public static double round2(double number1) {
 		double a = (number1 + 0.005); 
 		a = a*100.0; 
 		a = (int)a;
@@ -111,7 +111,7 @@ public class Calculate {
 		return a; 
 	}
 	
-	public static double exponent( double base, int power) { // This method raises a a double to a positive integer power // 
+	public static double exponent( double base, int power) {
 		if (power<0) {
 			throw new IllegalArgumentException ("Cannot be raised a number to the negative power");
 		}
@@ -129,7 +129,7 @@ public class Calculate {
 			return previous;
 		}
 
-	public static int factorial (int n) { // This method returns the factorial of the value passed // 
+	public static int factorial (int n) {
 		if (n<0) {
 			throw new IllegalArgumentException ("Cannot get the factorial"
 					+ " of a negative number");
@@ -142,7 +142,7 @@ public class Calculate {
 		
 	}
 		
-	public static boolean isPrime (int a) { // This method determines whether the integer passed is prime //
+	public static boolean isPrime (int a) {
 		for(int i = 2; a < i;i++ ) {
 			if(a%i == 0) {
 				return false;
@@ -151,7 +151,7 @@ public class Calculate {
 		return true;	
 	}
 
-	public static int gcf(int a, int b){ // This method finds the greatest common factor of two integers //
+	public static int gcf(int a, int b){
 		int gcf = 1;
 		if(a > b){
 			for(int i = b; i >= 1; i--){
@@ -169,7 +169,7 @@ public class Calculate {
 		return gcf;
 	}
 	
-	public static double sqrt(double a) { // This method returns the square root of the double passed. 
+	public static double sqrt(double a) {
 		if (a<0) {
 			throw new IllegalArgumentException ("Cannot square root a negative number");
 		}
@@ -186,7 +186,7 @@ public class Calculate {
 			
 	}
 	
-	public static String quadForm(int a, int b, int c){ // This method uses the the quadratic formula to approximate the real roots // 
+	public static String quadForm(int a, int b, int c){
 		double rootone;
 		double roottwo;
 		double discriminant = Calculate.discriminant(a, b, c);
