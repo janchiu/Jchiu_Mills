@@ -1,11 +1,15 @@
+//Janson Chiu 
+// 10/27/16
+import java.util.Arrays;
 
 public class Split 
 {
 	public static void main(String[] args) 
 	{
-		splitBread();
+	splitBread();
+	insideSandwich();
 		
-	breadStatement("applespineapplesbreadlettustomatobaconmayohambreadcheese");
+	String breadStatement = ("applespineapplesbreadlettustomatobaconmayohambreadcheese");
 	}
 		//String.split();
 		//It's a method that acts on a string, <StringName>.split(<String sp>);
@@ -26,26 +30,27 @@ public class Split
 	
 	
 	public static void splitBread(String statement) {
-		int counter = 0; 
-		int numberOfBreads = 0; 
-		String search = "bread";
-		String[] bread = breadStatement.split("bread");
-			
+		if(statement.indexOf(statement)<= 1) {
+			System.out.println("Not a sandwich");
 		}
-			string.split(statement);
-			if(bread.length ==2) {
-				
-			}
-		}
+		
 		/*Write a method that take in a string like "applespineapplesbreadlettustomatobaconmayohambreadcheese" describing a sandwich
 		 * use String.split to split up the sandwich by the word "bread" and return what's in the middle of the sandwich and ignores what's on the outside
 		 * What if it's a fancy sandwich with multiple pieces of bread?
 		*/
-	public static void splitBread
-	if(breadstatement <= 1) {
-	}else{ 
-		return ("not a sandwich");
-		
+	public static void insideSandwich(String sandwich){	
+			// no bread = not a sandwich
+			if(sandwich.indexOf("bread") < 0){
+				System.out.println("Not a Sandwich");
+			}
+			String substringAfterFirstBread = sandwich.substring(sandwich.indexOf("bread")+5); 
+			//location of possible second bread
+			if(substringAfterFirstBread.indexOf("bread") <= 0){
+				System.out.println("Not a Sandwich");
+			}else{
+				String stuffNotBread [] = sandwich.split("bread");
+				System.out.println(Arrays.toString(stuffNotBread));
+				
 		//Your task pt 2:
 		/*Write a method that take in a string like "apples pineapples bread lettus tomato bacon mayo ham bread cheese" describing a sandwich
 		 * use String.split to split up the sandwich at the spaces, " ", and return what's in the middle of the sandwich and ignores what's on the outside
