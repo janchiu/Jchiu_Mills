@@ -1,3 +1,8 @@
+// Janson Chiu
+// APCS Period 1
+//11/6/16
+//Arrays Lab 3
+
 package arrays_materials;
 
 import java.util.Arrays;
@@ -10,12 +15,17 @@ public class ArraysLab3
 	 * in which every element is the sum of the elements at that index for the arrays arr1 and arr2. 
 	 * You can assume arrays arr1 and arr2 have at least one element each and are the same length.
 	 */
+	
 	public static int[] sum(int[] arr1, int[] arr2)
 	{
 		assert (arr1.length > 0);
 		assert (arr2.length > 0);
 		assert (arr1.length == arr2.length);
-		
+	int[] sumOfTwoArrays = new int[arr1.length];
+	for(int i =0; i<arr1.length; i++) {
+		sumOfTwoArrays[i] = arr1[i] + arr2[2];
+	}
+	return sumOfTwoArrays;
 	}
 	
 	/*
@@ -27,7 +37,12 @@ public class ArraysLab3
 	public static int[] append(int[] arr, int num)
 	{
 		assert (arr.length > 0);
-		
+		int[] appendArray = new int[arr.length + 1];
+		for(int i = arr.length-1; i >= 0; i--) {
+			arr[i] = arr[i-1];
+		}
+		appendArray[arr.length] =num;
+		return appendArray;
 	}
 	
 	/*
@@ -39,7 +54,14 @@ public class ArraysLab3
 	public static int[] remove(int[] arr, int idx)
 	{
 		assert (arr.length >= 2);
-		
+		int[] removeArr = new int[arr.length-1];
+		for(int i = 0; i<idx; i++) {
+			removeArr[i] = arr[i+1];
+		}
+		for(int i = idx; i<removeArr.length; i++) {
+			removeArr[i] = arr[i-1];
+		}
+		return removeArr;
 	}
 	
 	/*
@@ -50,6 +72,12 @@ public class ArraysLab3
 	public static int sumEven(int[] arr)
 	{
 		assert (arr.length > 0);
+		int sum = 0;
+		for(int i = 0; i<arr.length; i++) {
+			if(arr[i]%2 == 0) {
+				sum += arr[i];
+			}
+		}
 		
 	}
 	
@@ -91,6 +119,8 @@ public class ArraysLab3
 	
 	public static void main(String[] args) 
 	{
+		a3 = 
+	
 		
 	}
 }

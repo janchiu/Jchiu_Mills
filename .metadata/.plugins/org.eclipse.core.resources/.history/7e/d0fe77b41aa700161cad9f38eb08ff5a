@@ -9,10 +9,16 @@ import java.util.Arrays;
 
 public class ArraysLab3 
 {
+	/*
+	 * Write a method named sum that accepts two arrays of integers arr1 and arr2 
+	 * and returns an array of integers, 
+	 * in which every element is the sum of the elements at that index for the arrays arr1 and arr2. 
+	 * You can assume arrays arr1 and arr2 have at least one element each and are the same length.
+	 */
 	
-	public static int[] sum(int[] arr1, int[] arr2) // accepts two arrays of integers arr1 and arr2
-	{												// returns an array of integers
-		assert (arr1.length > 0);					// assumes that the length of arr1 and arr2 is greater than 0 and has the same length
+	public static int[] sum(int[] arr1, int[] arr2)
+	{
+		assert (arr1.length > 0);
 		assert (arr2.length > 0);
 		assert (arr1.length == arr2.length);
 	int[] sumOfTwoArrays = new int[arr1.length];
@@ -21,10 +27,16 @@ public class ArraysLab3
 	}
 	return sumOfTwoArrays;
 	}
-
-	public static int[] append(int[] arr, int num) // accepts an array of integers arr of length n and an integer num
-	{												// returns an array of integers of length n+1
-		assert (arr.length > 0);					// Assumes that arr length is greater than 0
+	
+	/*
+	 * Write a method named append that accepts an array of integers arr of length n 
+	 * and an integer num, and returns an array of integers of length n+1 
+	 * that consists of the elements of arr with num appended to the end.  
+	 * You can assume array arr has at least one element.
+	 */
+	public static int[] append(int[] arr, int num)
+	{
+		assert (arr.length > 0);
 		int[] appendArray = new int[arr.length + 1];
 		for(int i = arr.length-1; i >= 0; i--) {
 			arr[i] = arr[i-1];
@@ -33,11 +45,15 @@ public class ArraysLab3
 		return appendArray;
 	}
 	
-	public static int[] remove(int[] arr, int idx) //  accepts an array of integers arr and an integer idx 
-												   //  returns an array of integers consisting of all of the elements of arr 
-													
+	/*
+	 * Write a method named remove that accepts an array of integers arr and an integer idx 
+	 * and returns an array of integers consisting of all of the elements of arr 
+	 * except for the element at index idx (thus, the returned array has a length of arr.length – 1).  
+	 * You can assume arr has at least two elements.
+	 */
+	public static int[] remove(int[] arr, int idx)
 	{
-		assert (arr.length >= 2);	// assumes that the length of arr is greater than 2 
+		assert (arr.length >= 2);
 		int[] removeArr = new int[arr.length-1];
 		for(int i = 0; i<idx; i++) {
 			removeArr[i] = arr[i+1];
@@ -48,10 +64,14 @@ public class ArraysLab3
 		return removeArr;
 	}
 	
-	public static int sumEven(int[] arr) // accepts an array of integers arr
-										 // returns an integer containing the sum of the elements at the even indices of arr
+	/*
+	 * Write a method sumEven that accepts an array of integers arr 
+	 * and returns an integer containing the sum of the elements at the even indices of arr.  
+	 * (That means elements at indices 0,2,4,6,8.)  You can assume arr has at least one element.
+	 */
+	public static int sumEven(int[] arr)
 	{
-		assert (arr.length > 0); // assumes that arr has at least one element
+		assert (arr.length > 0);
 		int sum = 0;
 		for(int i = 0; i<arr.length; i++) {
 			if(arr[i]%2 == 0) {
@@ -68,10 +88,9 @@ public class ArraysLab3
 	 * (element 0 goes to element 1, element 1 goes to element 2, …, element n-1 goes to element 0).  
 	 * You can assume arr has at least one element.
 	 */
-	public static void rotateRight(int[] arr) // moves each element of arr one index to the right, element n-1 goes to element 0
-											  // accepts an array of integers arr and does not return a value 
+	public static void rotateRight(int[] arr)
 	{
-		assert (arr.length > 0);			// assumes that arr has at least one element
+		assert (arr.length > 0);
 		int lastValue = arr[arr.length-1];
 		for (int i = arr.length-1; i >0; i--) {
 			arr[i] = arr[i-1];
@@ -102,7 +121,7 @@ public class ArraysLab3
 				a1
 	 */
 	
-	public static void main(String[] args) // it will test and print out the methods
+	public static void main(String[] args) 
 	{
 		int[] a1 = {5,10,15,20,25,30,35,40};
 		int[] a2 = {7,14,21,28,35,42,49,56};
