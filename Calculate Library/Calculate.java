@@ -46,8 +46,10 @@ public class Calculate {
 		return improperfrac;
 	}
 	
-	public static String toMixedNum(int number1, int number2){ // This method converts an improper fraction into a mixed number //
-		return(number1/number2 + "_" + number1%number2 + "/" + number2);
+	public static String toMixedNum(int numerator, int denominator){ // This method converts an improper fraction into a mixed number //
+		String mixedNumb;
+		mixedNumb = (numerator/denominator) + "_" + (numerator%denominator) + "/" + (denominator);
+		return mixedNumb;
 	}
 	
 	public static String foil (int a, int b, int c, int d, String n){ // This method converts a binomial multiplication of the form (ax+d)(cx+d) into a mixed number //
@@ -142,9 +144,9 @@ public class Calculate {
 		
 	}
 		
-	public static boolean isPrime (int a) { // This method determines whether the integer passed is prime //
-		for(int i = 2; a < i;i++ ) {
-			if(a%i == 0) {
+	public static boolean isPrime (int a) { // This method determines whether the integer passed is a prime number//
+		for(int i = 2; i < a;i++ ) {
+			if(Calculate.isDivisibleBy(a,i) == true) {
 				return false;
 			}
 		}
