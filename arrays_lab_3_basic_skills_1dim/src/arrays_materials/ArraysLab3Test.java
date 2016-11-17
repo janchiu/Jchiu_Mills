@@ -1,3 +1,9 @@
+//Janson Chiu 
+//1st Period
+//  11/16/16 Resubmit
+
+
+
 package arrays_materials;
 
 import static org.junit.Assert.*;

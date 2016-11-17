@@ -26,10 +26,10 @@ public class ArraysLab3
 	{												// returns an array of integers of length n+1
 		assert (arr.length > 0);					// Assumes that arr length is greater than 0
 		int[] appendArray = new int[arr.length + 1];
-		for(int i = 0; i < arr.length; i++) {
-			appendArray[i] = arr[i]; 
+		for(int i = arr.length-1; i >= 0; i--) {
+			arr[i] = arr[i-1]; 
 		}
-		appendArray[arr.length] = num;
+		appendArray[arr.length-1] = num;
 		return appendArray;
 	}
 	

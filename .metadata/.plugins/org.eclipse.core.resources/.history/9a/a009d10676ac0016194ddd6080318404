@@ -5,7 +5,7 @@
 /**
   APCS1//Janson Chiu
 //Period 1
-//Date: 11/16/16
+//Due: 9/24/16
 //Math Library
  *
  */
@@ -52,14 +52,8 @@ public class Calculate {
 		return mixedNumb;
 	}
 	
-	public static String foil (int a, int b, int c, int d, String n){ // This method converts a binomial multiplication of the form (ax+d)(cx+d) into a polynomial //
-		int secondDegree = a*c;
-		int firstDegree = (a*d)+(b*c);
-		int yInteger = (b*d);
-		String polynomial = (secondDegree)+(n)+"^2 ";
-		if 
+	public static String foil (int a, int b, int c, int d, String n){ // This method converts a binomial multiplication of the form (ax+d)(cx+d) into a mixed number //
 		return((a*c)+"n^2"+ "+" +(((a*d)+(b*c)))+"n"+ "+"+(b*d));
-		
 	}
 	
 	public static boolean isDivisibleBy(int a, int b){ // This method determines whether or not one integer is evenly divisible by another integer //
