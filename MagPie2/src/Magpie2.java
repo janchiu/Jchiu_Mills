@@ -13,42 +13,30 @@ public class Magpie2 {
 	 */
 	public String getResponse(String statement) {
 		String response = "";
+
 		if (statement.indexOf("no") >= 0) {
 			response = "Why not?";
 		} else if (statement.indexOf("mother") >= 0
 				|| statement.indexOf("father") >= 0
-				|| statement.indexOf("sister") >= 0 ) {
+				|| statement.indexOf("sister") >= 0 
+				|| statement.indexOf("brother") >= 0){
 			response = "Tell me more about your family.";
-		} else if (statement.indexOf("brother") >= 0 ) {
-			response = "your brother is a nice person";
+		} else if (statement.indexOf("wolf") >= 0 ) {
+			response = "I love wolves";
 		} else if (statement.indexOf("friend") >= 0) {
 			response = "Tell me more about your friend";
+		} else if (statement.indexOf("thirsty") >= 0) {
+			response = "Go drink some water";
+		} else if (statement.indexOf("tennessee") >= 0){
+			response = "You're the only ten I see";
+		} else if(statement.trim().length()==0){
+			response = "Say something, please.";
 		} else {
 			response = getRandomResponse();
 		}
 		return response;
 	}
-	
-	public String trim(String statement) { 
-		String response = "";
-		if (statement.length() == 0) { 
-			response = "Say something, please";
-		} else { if 
-			
-			
-		}
-	}
 
-	public String teacherResponse(String statement) {
-		String response = "";
-		if(statement.indexOf("Mr.")>= 0) {
-			response = "He sounds like a good teacher.";
-		} else if (statement.indexOf("Mrs.")>=0) {
-			response = "She sounds like a good teacher.";
-		} else if (statement.indexOf("Ms.") >=0) {
-			response = "She sounds like a good teacher.";
-		}
-	}
 	/**
 	 * Pick a default response to use if nothing else fits.
 	 * returns a non-committal string
@@ -67,8 +55,11 @@ public class Magpie2 {
 			response = "Do you really think so?";
 		} else if (whichResponse == 3) {
 			response = "You don't say.";
+		} else if (whichResponse == 4) {
+			response = "What did you do today?";
+		} else if (whichResponse == 5) {
+			response = "What is your favorite video game?";
 		}
-
 		return response;
 	}
 }

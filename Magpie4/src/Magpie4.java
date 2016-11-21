@@ -25,11 +25,32 @@ public class Magpie4 {
 	public String getResponse(String statement) {
 		
 		// Paste Part 3 code here.  The method has new pieces that continue below and should flow from your previous code.
+		String response = "";
 
-
+		if (findKeyword(statement,"no") >= 0) {
+			response = "Why not?";
+		} else if (findKeyword(statement,"mother") >= 0
+				|| findKeyword(statement,"father") >= 0
+				|| findKeyword(statement,"sister") >= 0 
+				|| findKeyword(statement,"brother") >= 0){
+			response = "Tell me more about your family.";
+		} else if (findKeyword(statement,"wolf") >= 0 ) {
+			response = "I love wolves";
+		} else if (findKeyword(statement,"friend") >= 0) {
+			response = "Tell me more about your friend";
+		} else if (findKeyword(statement,"thirsty") >= 0) {
+			response = "Go drink some water";
+		} else if (findKeyword(statement,"tennessee") >= 0){
+			response = "You're the only ten I see";
+		} else if(statement.trim().length()==0){
+			response = "Say something, please.";
 		// Responses which require transformations
-		else if (findKeyword(statement, "I want to", 0) >= 0) {
+		}else if (findKeyword(statement, "I want to", 0) >= 0) {
 			response = transformIWantToStatement(statement);
+		} else if (findKeyword(statement, "I want", 0) >= 0) {
+			response = transformIWantToStatement(statement);
+		} else if (findKeyword(statement, "I", 0) >= 0) {
+			response = transformISomethingYouStatement(statement);
 		}
 
 		else {
@@ -48,7 +69,7 @@ public class Magpie4 {
 
 	/**
 	 * Take a statement with "I want to <something>." and transform it into
-	 * "What would it mean to <something>?"
+	 * "Would you really  <something>?"
 	 * 
 	 * @param statement
 	 *            the user statement, assumed to contain "I want to"
@@ -58,12 +79,12 @@ public class Magpie4 {
 		// Remove the final period, if there is one
 		statement = statement.trim();
 		String lastChar = statement.substring(statement.length() - 1);
-		if (lastChar.equals(".")) {
+		if (lastChar.equals(".") || lastChar.equals("!")) {
 			statement = statement.substring(0, statement.length() - 1);
 		}
-		int psn = findKeyword(statement, "I want to", 0);
-		String restOfStatement = statement.substring(psn + 9).trim();
-		return "What would it mean to " + restOfStatement + "?";
+		int psn = findKeyword(statement, "I want", 0);
+		String restOfStatement = statement.substring(psn + 7).trim();
+		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
 
 	/**
@@ -85,9 +106,31 @@ public class Magpie4 {
 		int psnOfYou = findKeyword(statement, "you", 0);
 		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
 
-		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe)
-				.trim();
+		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
 		return "What makes you think that I " + restOfStatement + " you?";
+	}
+	/**
+	 * Take a statement with "I want to <something>." and transform it into
+	 * "Why do you <something> me?"
+	 * 
+	 * @param statement
+	 *            the user statement, assumed to contain "I" followed by "you"
+	 * @return the transformed statement
+	 */
+	
+	private String transformISomethingYouStatement(String statement) {
+		// Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length() - 1);
+		if (lastChar.equals(".")) {
+			statement = statement.substring(0, statement.length() - 1);
+		}
+
+		int psnOfI = findKeyword(statement, "I", 0);
+		int psnOfYou = findKeyword(statement, "me", psnOfI + 3);
+
+		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
+		return "Why do you " + restOfStatement + " me?";
 	}
 
 	/**
@@ -154,8 +197,27 @@ public class Magpie4 {
 	 * @return a non-committal string
 	 */
 	private String getRandomResponse() {
-		
+		final int NUMBER_OF_RESPONSES = 4;
+		double r = Math.random();
+		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
+		String response = "";
+
+		if (whichResponse == 0) {
+			response = "Interesting, tell me more.";
+		} else if (whichResponse == 1) {
+			response = "Hmmm.";
+		} else if (whichResponse == 2) {
+			response = "Do you really think so?";
+		} else if (whichResponse == 3) {
+			response = "You don't say.";
+		} else if (whichResponse == 4) {
+			response = "What did you do today?";
+		} else if (whichResponse == 5) {
+			response = "What is your favorite video game?";
+		}
+		return response;
+	}
 		// Paste part 3 code here	
 	}
 
-}
+

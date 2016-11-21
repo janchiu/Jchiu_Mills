@@ -24,11 +24,32 @@ public class Magpie3 {
 	
 	
 	public String getResponse(String statement) {
-		
+		String response = "";
+
+		if (findKeyword(statement,"no") >= 0) {
+			response = "Why not?";
+		} else if (findKeyword(statement,"mother") >= 0
+				|| findKeyword(statement,"father") >= 0
+				|| findKeyword(statement,"sister") >= 0 
+				|| findKeyword(statement,"brother") >= 0){
+			response = "Tell me more about your family.";
+		} else if (findKeyword(statement,"wolf") >= 0 ) {
+			response = "I love wolves";
+		} else if (findKeyword(statement,"friend") >= 0) {
+			response = "Tell me more about your friend";
+		} else if (findKeyword(statement,"thirsty") >= 0) {
+			response = "Go drink some water";
+		} else if (findKeyword(statement,"tennessee") >= 0){
+			response = "You're the only ten I see";
+		} else if(statement.trim().length()==0){
+			response = "Say something, please.";
+		} else {
+			response = getRandomResponse();
+		}
+		return response;
+	}
 		// Paste part 2 code here	
 		
-		
-	}
 
 	/**
 	 * Search for one word in phrase. The search is not case sensitive. This
@@ -90,6 +111,8 @@ public class Magpie3 {
 	 * returns the index of the first occurrence of goal in statement or -1 if it's not found
 	 */
 	private int findKeyword(String statement, String goal) {
+		String phrase = statement.trim();
+		int psn = phrase.toLowerCase().indexOf(goal.toLowerCase(),startPos);
 		return findKeyword(statement, goal, 0);
 	}
 
@@ -98,9 +121,28 @@ public class Magpie3 {
 	 * returns a non-committal string
 	 */
 	private String getRandomResponse() {
-		
+		final int NUMBER_OF_RESPONSES = 4;
+		double r = Math.random();
+		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
+		String response = "";
+
+		if (whichResponse == 0) {
+			response = "Interesting, tell me more.";
+		} else if (whichResponse == 1) {
+			response = "Hmmm.";
+		} else if (whichResponse == 2) {
+			response = "Do you really think so?";
+		} else if (whichResponse == 3) {
+			response = "You don't say.";
+		} else if (whichResponse == 4) {
+			response = "What did you do today?";
+		} else if (whichResponse == 5) {
+			response = "What is your favorite video game?";
+		}
+		return response;
+	}
 		// Paste part 2 code here	
 		
 	}
 
-}
+
