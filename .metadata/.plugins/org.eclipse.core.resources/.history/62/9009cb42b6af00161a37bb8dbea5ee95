@@ -1,11 +1,3 @@
-// Janson Chiu
-// APCS Period 1
-// 10/17/16
-// MagPie 4
-// Receives a string, responds with a string
-
-
-
 public class Magpie4 {
 	
 	//Get a default greeting and return a greeting
