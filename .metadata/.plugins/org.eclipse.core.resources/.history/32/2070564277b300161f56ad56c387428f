@@ -34,7 +34,7 @@ public class Magpie4 {
 		
 		// Paste Part 3 code here.  The method has new pieces that continue below and should flow from your previous code.
 		String response = "";
-		if (statement.length() == 0); {
+		if (statement.length() = 0); {
 			response = "Say Something, please.";
 		}
 		if (findKeyword(statement,"no") >= 0) {
@@ -56,9 +56,9 @@ public class Magpie4 {
 			
 		// Responses which require transformations
 		}else if (findKeyword(statement, "I want to", 0) >= 0) {
-			response = transformIWantToStatement(statement);
+			response = transformISomethingYouStatement(statement);
 		} else if (findKeyword(statement, "I want", 0) >= 0) {
-			response = transformIWantStatement(statement);
+			response = transformYouMeStatement(statement);
 		} else if (findKeyword(statement, "I", 0) >= 0) {
 			response = transformISomethingYouStatement(statement);
 		}
@@ -137,24 +137,10 @@ public class Magpie4 {
 		}
 
 		int psnOfI = findKeyword(statement, "I", 0);
-		int psnOfYou = findKeyword(statement, "you", psnOfI + 3);
+		int psnOfYou = findKeyword(statement, "me", psnOfI + 3);
 
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 		return "Why do you " + restOfStatement + " me?";
-	}
-
-	private String transformIWantToStatement(String statement) {
-		// Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement.length() - 1);
-		if (lastChar.equals(".")) {
-			statement = statement.substring(0, statement.length() - 1);
-		}
-
-		int psn = findKeyword(statement, "I want to", 0);
-		
-		String restOfStatement = statement.substring(psn + 9).trim();
-		return "What would it meant to " + restOfStatement + "?";
 	}
 
 	/**
