@@ -5,7 +5,7 @@
 /**
   APCS1//Janson Chiu
 //Period 1
-//Date: 11/16/16
+//Date: 11/25/16
 //Math Library
  *
  */
@@ -36,29 +36,42 @@ public class Calculate {
 		return((number/180)*pi);
 	}
 	
-	public static double discriminant(double number1, double number2, double number3) { // finds the discriminant of three doubles // 
-		return((number2*number2)-(4*number1*number3));
+	public static double discriminant(double a, double b, double c) { // finds the discriminant of three doubles // 
+		return((b*b)-(4*a*c));
 	}
 				
-	public static String toImproperFrac(int a, int b, int c) { // This method converts mixed number into an improper fraction //
-		int numerator = ((a*c)+b);
-		String improperfrac = (numerator + "/" + c);
-		return improperfrac;
+	public static String toImproperFrac(int wholenumber, int numerator, int denominator) { // This method converts mixed number into an improper fraction //
+		String answer = (((wholenumber*denominator)+numerator)+ "/" + denominator);
+		return answer;
 	}
 	
 	public static String toMixedNum(int numerator, int denominator){ // This method converts an improper fraction into a mixed number //
-		String mixedNumb;
-		mixedNumb = (numerator/denominator) + "_" + (numerator%denominator) + "/" + (denominator);
-		return mixedNumb;
+		int wholeNumb = numerator/denominator;
+		int numer = numerator%denominator;
+		if(numer != 0) {
+				return(wholeNumb + "_" + numer + "/" + denominator);
+		} else {
+				return(wholeNumb + "");
+		}
 	}
 	
 	public static String foil (int a, int b, int c, int d, String n){ // This method converts a binomial multiplication of the form (ax+d)(cx+d) into a polynomial //
 		int secondDegree = a*c;
 		int firstDegree = (a*d)+(b*c);
 		int yInteger = (b*d);
-		String polynomial = (secondDegree)+(n)+"^2 ";
-		if 
-		return((a*c)+"n^2"+ "+" +(((a*d)+(b*c)))+"n"+ "+"+(b*d));
+		String polynomial = (secondDegree+n+"^2 ");
+		if (firstDegree < 0){
+			polynomial += firstDegree;
+		} else {
+			polynomial += ("+ "+ firstDegree + n);
+		}
+		if ( yInteger <0){
+			polynomial += (" - "+ -1*yInteger);
+		} else {
+				polynomial +=(" + "+ yInteger);
+		}
+		
+		return(polynomial);
 		
 	}
 	
@@ -82,11 +95,11 @@ public class Calculate {
 		}
 	}
 	
-	public static int max (int a,int b) { // This method returns the larger of the two integers passed //
-		if (a>b) {
-			return a;
+	public static double max (double number1, double number2) { // This method returns the larger of the two integers passed //
+		if (number1>number2) {
+			return number1;
 		}else {
-			return b;
+			return number2;
 		}
 	}
 				
@@ -103,20 +116,23 @@ public class Calculate {
 		  }
 	}
 	
-	public static int min(int a, int b) { // This method returns the smaller of the two integers passed // 
-		if (a > b) {
-			return a;
+	public static double min(double number1, double number2) { // This method returns the smaller of the two integers passed // 
+		if (number1 > number2) {
+			return number2;
 		}else {
-			return b;
+			return number1;
 		}
 	}
 	
 	public static double round2(double number1) { // This method rounds a double to 2 decimal places // 
-		double a = (number1 + 0.005); 
-		a = a*100.0; 
-		a = (int)a;
-		a = a / 100.0;
-		return a; 
+		double x = number1*1000;
+		double y = x%10;
+		if (y >= 5) {
+			return (x-y+10)/1000;
+		} else {
+			return (x-y)/1000;
+		}
+		
 	}
 	
 	public static double exponent( double base, int power) { // This method raises a a double to a positive integer power // 
@@ -159,24 +175,15 @@ public class Calculate {
 		return true;	
 	}
 
-	public static int gcf(int a, int b){ // This method finds the greatest common factor of two integers //
-		int gcf = 1;
-		if(a > b){
-			for(int i = b; i >= 1; i--){
-				if(a % i == 0 && b % i == 0){
-					return i;
-				}
-			}
+	public static double gcf(double number1, double number2) {
+		if(number1 < 0 || number2 < 0) {
+			return gcf(Calculate.absValue(number1), Calculate.absValue(number2));
+		}if(number2 == 0) {
+			return number1;
 		} else {
-			for(int j = a; j >=1; j--){
-				if(a % j == 0 && b % j == 0){
-					return j;
-				}
-			}
+			return gcf(number2, number1 % number2);
 		}
-		return gcf;
 	}
-	
 	public static double sqrt(double a) { // This method returns the square root of the double passed. 
 		if (a<0) {
 			throw new IllegalArgumentException ("Cannot square root a negative number");
@@ -194,26 +201,23 @@ public class Calculate {
 			
 	}
 	
-	public static String quadForm(int a, int b, int c){ // This method uses the the quadratic formula to approximate the real roots // 
-		double rootone;
-		double roottwo;
+
+	public static String quadForm(int a, int b, int c) { //The method finds the roots of a quadratic function in standard form (place coefficients in the order they appear in when in standard form)
 		double discriminant = Calculate.discriminant(a, b, c);
-		if (discriminant < 0){
-			return "no real roots";
+		if (discriminant < 0) {
+			return ("no real roots");
 		}
-		else if (discriminant == 0){
-			rootone = ((-b + discriminant)/(2*a));
-			return "Root = " + rootone;
+		double rootone = Calculate.round2((-b + Calculate.sqrt(discriminant)) / (2 * a));
+		double roottwo = Calculate.round2((-b - Calculate.sqrt(discriminant)) / (2 * a));
+		if (rootone == roottwo) {
+			return (rootone + "");
 		}
-		else {
-			rootone = Calculate.round2((-b - discriminant)/(2*a));
-			roottwo = Calculate.round2((-b + discriminant)/(2*a));
-			if(rootone>roottwo){
-				return(roottwo+ " and "+ rootone);
-			}
-			else {
-				return(rootone+ " and "+ roottwo);
-			}
+		if (rootone > roottwo) {
+			return (roottwo + " and " + rootone);
+		} else {
+			return (rootone + " and " + roottwo);
 		}
 	}
 }
+
+
