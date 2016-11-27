@@ -12,8 +12,15 @@ public class FracCalc {
     		Scanner newInput = new Scanner(System.in);
     		System.out.println("Please enter your input");
     		String input = newInput.nextLine();
-    		String send = produceAnswer(input);
-    		System.out.println(send);
+    		if(input.equals("quit")){
+    				String answer = produceAnswer(input);
+    				System.out.println(answer);
+    		}
+    		produceAnswer(input);
+    		
+    		//String input = newInput.nextLine();
+    		//String send = produceAnswer(input);
+    		//System.out.println(send);
     	}
 
   
@@ -29,8 +36,61 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
+        String firstOperand = new String();
+        String secondOperand = new String();
+        String operator= new String();
         
-        return "";
+        int locationfirst= input.indexOf(" ");
+      
+        int locationsecond= input.indexOf(" ", locationfirst+2);
+        		
+        firstOperand= input.substring(0,locationfirst);
+        secondOperand = input.substring(locationfirst+3);
+        operator= input.substring(locationfirst+1, locationsecond);
+        
+        return partsImproper(secondOperand);
+    }
+    public static String partsImproper(String secondOperand){
+    	
+    	int slash= secondOperand.indexOf("/");
+    	int underscore= secondOperand.indexOf("_");
+    	
+    	String wholeNum;
+    	String denominator;
+    	String  numerator;
+    	
+    	
+    	if(slash<0 && underscore<0){
+    		wholeNum= secondOperand;
+    		numerator= "0";
+    		denominator= "1";
+    	}
+    	else if (slash>0 && underscore<0){
+    		wholeNum= "0";
+    		numerator = secondOperand.substring(0,slash);
+    		denominator = secondOperand.substring(slash+1);
+    		
+    	}
+    	
+    	else {
+    		wholeNum= secondOperand.substring(0,underscore);
+    		numerator = secondOperand.substring(underscore+1,slash);
+    		denominator = secondOperand.substring(slash+1);
+    	}
+    	return ("whole:"+wholeNum+" "+"numerator:"+numerator+" "+"denominator:"+denominator);
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
