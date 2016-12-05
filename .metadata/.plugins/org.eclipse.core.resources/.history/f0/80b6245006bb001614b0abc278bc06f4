@@ -81,7 +81,6 @@ public class FracCalc {
     	return ("whole:"+wholeNum+" "+"numerator:"+numerator+" "+"denominator:"+denominator);
     	
     }
-    
     	public static int[] toImproperFrac(int wholeNum, int numerator, int denominator) { // This method converts mixed number into an improper fraction //
     		if(wholeNum > 0) {
     			numerator = (wholeNum*denominator) - numerator;
@@ -96,9 +95,6 @@ public class FracCalc {
     	}
     	
     	public static int[] parseOperands(String operand){
-    		String[] operands = operand.split("_");
-    		
-    		
     	}
     	
     	
@@ -118,7 +114,7 @@ public class FracCalc {
     	
     	}
     	
-    	public static String subtractFrac(denominator1, denominator2, numerator1, numerator2) {
+    	public static void subtractFrac(denominator1, denominator2, numerator1, numerator2) {
     	String  answer; 
     	if(denominator1 == denominator2){
     		commonDenominator = denominator1;
@@ -149,7 +145,7 @@ public class FracCalc {
     	
 
     // TODO: Fill in the space below with any helper methods that you think you will need
-
+    
 }
 
 }

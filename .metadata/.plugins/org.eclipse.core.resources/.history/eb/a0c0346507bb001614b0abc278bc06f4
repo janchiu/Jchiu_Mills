@@ -98,7 +98,6 @@ public class FracCalc {
     	public static int[] parseOperands(String operand){
     		String[] operands = operand.split("_");
     		
-    		
     	}
     	
     	
@@ -149,7 +148,7 @@ public class FracCalc {
     	
 
     // TODO: Fill in the space below with any helper methods that you think you will need
-
+    
 }
 
 }
