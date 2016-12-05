@@ -17,7 +17,7 @@ public class FracCalc {
     				System.out.println(answer);
     		}
     		produceAnswer(input);
-    		
+    		System.out.println();
     		//String input = newInput.nextLine();
     		//String send = produceAnswer(input);
     		//System.out.println(send);
@@ -49,6 +49,7 @@ public class FracCalc {
         operator= input.substring(locationfirst+1, locationsecond);
         
         return partsImproper(secondOperand);
+        
     }
     public static String partsImproper(String secondOperand){
     	
@@ -79,27 +80,72 @@ public class FracCalc {
     	}
     	return ("whole:"+wholeNum+" "+"numerator:"+numerator+" "+"denominator:"+denominator);
     	
-    	
-    	
-    	public static void toImproperFrac 
-    	
-    	public static void addFrac
-    	
-    	public static void subtractFrac 
-    	
-    	public static void multiplyFrac 
-    
-    	public static void divideFrac 
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
     }
+    	public static int[] toImproperFrac(int wholeNum, int numerator, int denominator) { // This method converts mixed number into an improper fraction //
+    		if(wholeNum > 0) {
+    			numerator = (wholeNum*denominator) - numerator;
+    		} else {
+    			numerator = (wholeNum*denominator) + numerator;
+    		}
+    			int[] numeratorAndDenominator = new int[2];
+    			numeratorAndDenominator[0] = numerator;
+    			numeratorAndDenominator[1] = denominator;
+    			return numeratorAndDenominator;
+    		
+    	}
+    	
+    	public static int[] parseOperands(String operand){
+    	}
+    	
+    	
+    	public static String addFrac(denominator1, denominator2, numerator1, numerator2){
+    	int answer; 
+    	if(denominator1 == denominator2){
+    		commonDenominator = denominator1;
+    		answer = (numerator1+numerator2)+ "/ " + commonDenominator;
+    	}
+    	else {
+    		commonDenominator = (denominator1 * denominator2);
+    		int newNumerator1 = numerator1 * denominator2;
+    		int newNumerator2 = numerator2 * denominator1;
+    		answer = (newNumerator1+newNumerator2) + "/" + commondDenominator;
+    	}
+    		return answer;
+    	
+    	}
+    	
+    	public static void subtractFrac(denominator1, denominator2, numerator1, numerator2) {
+    	String  answer; 
+    	if(denominator1 == denominator2){
+    		commonDenominator = denominator1;
+    		answer = (numerator1-numerator2)+ "/ " + commonDenominator;
+    	}
+    	else {
+    		commonDenominator = (denominator1 * denominator2);
+    		int newNumerator1 = numerator1 * denominator2;
+    		int newNumerator2 = numerator2 * denominator1;
+    		answer = (newNumerator1-newNumerator2) + "/" + commonDenominator;
+    	}
+    		return answer;
+    	}
+
+    	public static String multiplyFrac(denominator1, denominator2, numerator1, numerator2) {
+    		String  answer; 
+    		int newNumerator = (numerator1 * numerator2);
+    		int newDenominator = (denominator1 * denominator2); 
+    		answer = newNumerator + "/" + mewDenominator; 
+    	}
+    	
+    	public static String divideFrac (numerator1, numerator2, denominator1, denominator2) {
+    	String answer; 
+    	int newNumerator = (numerator1 * denominator2); 
+    	int newDenominator = (numerator2 * denominator1); 
+    	answer = newNumerator + "/" + newDenominator; 
+    	}
+    	
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
+}
+
 }
