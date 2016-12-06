@@ -33,7 +33,7 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static int[] produceAnswer(String input)
+    public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
         String firstOperand = new String();
@@ -51,7 +51,7 @@ public class FracCalc {
         return partsImproper(secondOperand);
         
     }
-    public static String partsImproper(String secondOperand){
+    /*public static String partsImproper(String secondOperand){
     	
     	int slash= secondOperand.indexOf("/");
     	int underscore= secondOperand.indexOf("_");
@@ -81,7 +81,7 @@ public class FracCalc {
     	return ("whole:"+wholeNum+" "+"numerator:"+numerator+" "+"denominator:"+denominator);
     	
     }
-    
+    */
     	public static int[] toImproperFrac(int wholeNum, int numerator, int denominator) { // This method converts mixed number into an improper fraction //
     		if(wholeNum > 0) {
     			numerator = (wholeNum*denominator) - numerator;
@@ -96,7 +96,18 @@ public class FracCalc {
     	}
     	
     	public static int[] parseOperands(String operand){
-    		String[] operands = operand.split("_");
+    		
+    	
+    		if (operand.indexOf("+")!= -1){
+    			operand.split("+");
+    		} 
+    		if (operand.indexOf("-") != -1) {
+    			operand.split("-"); 
+    		} 
+    		if (operand.indexOf("*") != -1) {
+    			operand.split("*");
+    		}
+    		String[] operands = operand.split("+");
     		
     		
     	}
