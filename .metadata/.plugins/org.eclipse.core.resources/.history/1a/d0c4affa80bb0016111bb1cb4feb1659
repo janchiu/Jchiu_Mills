@@ -33,7 +33,7 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static int[] produceAnswer(String input)
+    public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
         String firstOperand = new String();
@@ -43,7 +43,7 @@ public class FracCalc {
         int locationfirst= input.indexOf(" ");
       
         int locationsecond= input.indexOf(" ", locationfirst+2);
-        int[] array = input.split(" ");
+        		
         firstOperand= input.substring(0,locationfirst);
         secondOperand = input.substring(locationfirst+3);
         operator= input.substring(locationfirst+1, locationsecond);
@@ -102,7 +102,7 @@ public class FracCalc {
     	}
     	
     	
-    	public static int[] addFrac(denominator1, denominator2, numerator1, numerator2){
+    	public static String addFrac(denominator1, denominator2, numerator1, numerator2){
     	int answer; 
     	if(denominator1 == denominator2){
     		commonDenominator = denominator1;
@@ -118,7 +118,7 @@ public class FracCalc {
     	
     	}
     	
-    	public static int[] subtractFrac(denominator1, denominator2, numerator1, numerator2) {
+    	public static String subtractFrac(denominator1, denominator2, numerator1, numerator2) {
     	String  answer; 
     	if(denominator1 == denominator2){
     		commonDenominator = denominator1;
@@ -133,14 +133,14 @@ public class FracCalc {
     		return answer;
     	}
 
-    	public static int[] multiplyFrac(denominator1, denominator2, numerator1, numerator2) {
+    	public static String multiplyFrac(denominator1, denominator2, numerator1, numerator2) {
     		String  answer; 
     		int newNumerator = (numerator1 * numerator2);
     		int newDenominator = (denominator1 * denominator2); 
     		answer = newNumerator + "/" + mewDenominator; 
     	}
     	
-    	public static int[] divideFrac (numerator1, numerator2, denominator1, denominator2) {
+    	public static String divideFrac (numerator1, numerator2, denominator1, denominator2) {
     	String answer; 
     	int newNumerator = (numerator1 * denominator2); 
     	int newDenominator = (numerator2 * denominator1); 
