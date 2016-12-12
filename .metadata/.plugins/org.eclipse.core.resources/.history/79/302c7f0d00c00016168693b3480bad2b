@@ -1,0 +1,293 @@
+package fracCalc;
+
+import java.util.Scanner;
+
+public class FracCalc {
+
+	
+
+    public static void main(String[] args) 
+    {
+        // TODO: Read the input from the user and call produceAnswer with an equation
+    		
+    		Scanner newInput = new Scanner(System.in);
+    		System.out.println("Please enter your input");
+    		String input = newInput.nextLine();
+    		if(input.equals("quit") != true){
+    				String answer = produceAnswer(input);
+    				System.out.println(answer);
+    				System.out.println();
+    				input = newInput.nextLine();
+    		}
+    		else {
+    			newInput.close();
+    		}
+    	}
+
+    // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
+    // This function takes a String 'input' and produces the result
+    //
+    // input is a fraction string that needs to be evaluated.  For your program, this will be the user input.
+    //      e.g. input ==> "1/2 + 3/4"
+    //        
+    // The function should return the result of the fraction after it has been calculated
+    //      e.g. return ==> "1_1/4"
+    public static String produceAnswer(String input)
+    { 
+        // TODO: Implement this function to produce the solution to the input
+    	if(input.indexOf(' ') == -1){
+    		return "incorrect input";
+    	}
+    	String [] splitTheSpaces = input.split(" ");
+        // TODO: Implement this function to produce the solution to the input
+    	
+        String operator = splitTheSpaces[1];
+        int [] firstPart = parseOperands(splitTheSpaces[0]);
+        int [] secondPart = parseOperands(splitTheSpaces[2]);
+        int[] resultFraction = new int[2];
+        resultFraction = parseOperands(splitTheSpaces[0]);
+        firstPart = toImproperFrac(firstPart);
+      	secondPart = toImproperFrac(secondPart);
+        
+        if(operator.equals("+")){
+        	resultFraction = addFrac((firstPart), (secondPart));
+        } else 
+        if(operator.equals("-"))
+        	resultFraction = subtractFrac(firstPart, secondPart);
+        else 
+        if(operator.equals("*")) 
+        	resultFraction = multiplyFrac(firstPart, secondPart);
+         else
+        if(operator.equals("/"))
+        	resultFraction = divideFrac(firstPart, secondPart);
+        else 
+        	System.out.println("Please check if you have an operator");
+        
+        String answer;
+        int[] reduceAnswer = reduceFrac(resultFraction);
+        	if(reduceAnswer[0] == 0 && reduceAnswer[1] != 0) {
+        		answer = reduceAnswer[1] + "/" + reduceAnswer[2];
+    	}
+    		else if (reduceAnswer[0] == 0 && reduceAnswer[0] ==0){
+    			answer = "0";
+    	} 
+    		else if (reduceAnswer[1] == 0) {
+    			answer = "" + reduceAnswer[1];
+    	} else {
+    		answer = reduceAnswer[0] + "_" + reduceAnswer[1] + "/" + reduceAnswer[2];
+    	}
+        	return answer;
+        
+    }
+        
+    /*
+       String answer;
+       int [] answerFrac =  reduceFrac(resultFraction);
+     	if (answerFrac[0] == 0 && answerFrac[1] != 0) {
+     		answer = answerFrac[1] + "/" + answerFrac[2];
+     	}
+     	else if (answerFrac[1] == 0) {
+     		answer = "" + answerFrac[0];
+     	}
+     	else if (answerFrac[0] == 0 && answerFrac[0] == 0) {
+     		answer = "0";
+     	}
+     	else {
+     		answer = answerFrac[0] + "_" + answerFrac[1] + "/" + answerFrac[2];
+     	}
+        
+        return answer;
+             
+      int locationfirst= input.indexOf(" ");
+      
+        int locationsecond= input.indexOf(" ", locationfirst+2);
+        int[] array = input.split(" ");
+        firstOperand= input.substring(0,locationfirst);
+        secondOperand = input.substring(locationfirst+3);
+        operator= input.substring(locationfirst+1, locationsecond);
+        
+        return partsImproper(secondOperand);
+     
+    public static String partsImproper(String secondOperand){
+    	
+    	int slash= secondOperand.indexOf("/");
+    	int underscore= secondOperand.indexOf("_");
+    	
+    	String wholeNum;
+    	String denominator;
+    	String  numerator;
+    	
+    	
+    	if(slash<0 && underscore<0){
+    		wholeNum= secondOperand;
+    		numerator= "0";
+    		denominator= "1";
+    	}
+    	else if (slash>0 && underscore<0){
+    		wholeNum= "0";
+    		numerator = secondOperand.substring(0,slash);
+    		denominator = secondOperand.substring(slash+1);
+    		
+    	}
+    	
+    	else {
+    		wholeNum= secondOperand.substring(0,underscore);
+    		numerator = secondOperand.substring(underscore+1,slash);
+    		denominator = secondOperand.substring(slash+1);
+    	}
+    	return ("whole:"+wholeNum+" "+"numerator:"+numerator+" "+"denominator:"+denominator);
+    	
+    }
+    
+	*/
+    public static int gcf(int[] answer){
+		//This method finds the greatest common factor between two numbers using a loop to calculate whether those two numbers are
+			//divisible by another number
+		 
+		int ans= 1;
+		if(answer[0]>0 && answer[1]>0){
+			for(int i=1; i<=answer[0] || i<=answer[1]; i++){
+				if ((answer[0]% i== 0) && (answer[1]% i ==0)) {
+					ans= i;
+				}
+			}
+		}
+		else{
+			for(int i=-1;i>=answer[0] || i>=answer[1]; i--){
+				if ((answer[0] % i == 0) && (answer[1]% i ==0)) {
+					ans= i;
+				}
+			}
+		}
+		return ans;
+	}
+    
+   
+    public static int[] reduceFrac(int[] operand) {
+    	
+    	int [] simpleFrac = new int [3]; 
+    	int wholeNum = operand[0]/operand[1];
+    	operand[0] = (operand[0]%operand[1]);
+    	if (wholeNum != 0) {
+    	operand[0] = Math.abs(operand[0]);
+    	}
+   
+    	int factor = gcf(operand);
+    	int numerator = operand[0]/factor;
+    	int denominator = Math.abs(operand[1]/factor); 
+    			simpleFrac[0] = wholeNum; 
+    			simpleFrac[1] = numerator;
+    			simpleFrac[2] = denominator; 
+    		return simpleFrac; 
+
+    }
+    /*	
+    public static int[] parseOperands(String operand){
+    	int[] threePartsOfArray = new int[3]; 
+		String underscore = "_";
+		String slash = "/";
+		int wholeNumber;
+		int numerator;
+		int denominator; 
+		
+		if(operand.indexOf(underscore)>0 && operand.indexOf(slash)>0) { // checks if there is an underscore 
+
+			wholeNumber = Integer.parseInt(operand.substring(0, operand.indexOf(underscore)));
+			numerator = Integer.parseInt(operand.substring(operand.indexOf(underscore)+1, operand.indexOf(slash)));
+			denominator = Integer.parseInt(operand.substring(operand.indexOf(operand.indexOf(slash)+1)));
+		} else 
+		if(operand.indexOf(underscore) < 0 && operand.indexOf(slash) >0){
+			wholeNumber = 0;
+			numerator = Integer.parseInt(operand.substring(0, operand.indexOf(slash)));
+			denominator = Integer.parseInt(operand.substring(operand.indexOf(slash)+1));
+		} else 
+		if(operand.indexOf(underscore)<0 && operand.indexOf(slash)<0) {
+			wholeNumber= Integer.parseInt(operand);
+			numerator = 0;
+			denominator = 1;
+		}
+		threePartsOfArray[0] = wholeNumber;
+		threePartsOfArray[1] = numerator;
+		threePartsOfArray[2] = denominator;
+		return threePartsOfArray;
+    }
+   */
+    
+    public static int [] parseOperand(String operand) {
+    	int wholeNum;
+    	int numerator;
+    	int denominator; 
+    	int [] operandArray = new int [3];
+    	if (operand.indexOf("/") >= 0 && operand.indexOf("_") >= 0) {
+        	wholeNum = Integer.parseInt(operand.substring(0, operand.indexOf("_"))); 
+        	 numerator = Integer.parseInt(operand.substring(operand.indexOf("_") + 1, operand.indexOf("/")));
+        	 denominator = Integer.parseInt(operand.substring(operand.indexOf("/") + 1));
+        }
+        else if (operand.indexOf("_") == -1 && operand.indexOf("/") >= 0) {
+        	wholeNum = 0;
+        	numerator = Integer.parseInt(operand.substring(0, operand.indexOf("/")));
+        	denominator = Integer.parseInt(operand.substring(operand.indexOf("/") + 1));
+        }
+        else {
+        	wholeNum = Integer.parseInt(operand);
+        	numerator = 0;
+        	denominator = 1;
+         }
+    	operandArray[0] = wholeNum;
+    	operandArray[1] = numerator;
+    	operandArray[2] = denominator;
+    	return operandArray;
+    	
+    	
+    }
+    public static int[] toImproperFrac(int[] operand) { // This method converts mixed number into an improper fraction //
+    	int[] improp = new int[2]; 
+    	
+    	if(operand[0]<0){
+    		improp[0] = (operand[0]*operand[2])-operand[1];
+    		improp[1] = (operand[2]);	
+    	}
+    	else {
+    		improp[0] = ((operand[0]*operand[2])+operand[1]);
+    		improp[1] = (operand[2]);
+    	}
+    	return improp;
+    }
+    
+	public static int[] addFrac(int[] firstOperand, int[] secondOperand){
+		int[] answer = new int[2]; 
+		int[] array = new int[2];
+		array[0] = (firstOperand[0]*secondOperand[1]) + (firstOperand[1]*secondOperand[0]);
+		answer[0] = array[0];
+		answer[1] = firstOperand[1]*secondOperand[1];
+		return answer;
+	}
+
+    public static int[] subtractFrac(int[] firstOperand, int[] secondOperand) {
+    	int[] answer = new int[2]; 
+    	int[] array = new int[2]; 
+		array[0] = (firstOperand[0]*secondOperand[1])- (firstOperand[1]*secondOperand[0]);	
+		answer[0] = array[0];
+		answer[1] = firstOperand[1]*secondOperand[1];
+		return answer;
+	}
+    
+    public static int[] multiplyFrac(int[] firstOperand, int[] secondOperand) {
+    	int[] answer = new int[2]; 
+    		answer[0] = (firstOperand[0] * secondOperand[0]);
+    		answer[1] = (firstOperand[1] * secondOperand[1]); 
+    		return answer;
+    	}
+    	
+    public static int[] divideFrac (int[] firstOperand, int[] secondOperand) {
+    	int[] newOperand = new int[2]; 
+    	int numerator = firstOperand[0] * secondOperand[1];
+    	int denominator = firstOperand[1]* secondOperand[0]; 
+		newOperand[0] = numerator;
+    	newOperand[1] = denominator;
+    		return newOperand;
+    	}
+    // TODO: Fill in the space below with any helper methods that you think you will need
+}
+
+
