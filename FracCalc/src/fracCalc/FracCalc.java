@@ -1,5 +1,7 @@
-
-
+// Janson Chiu 
+//Due Date: 12/12/16
+// FracCalc
+// APCS Period 1
 
 
 package fracCalc;
@@ -14,17 +16,29 @@ public class FracCalc {
     {
         // TODO: Read the input from the user and call produceAnswer with an equation
     		
-    		Scanner newInput = new Scanner(System.in);
-    		System.out.println("Please enter your input");
+    		Scanner newInput = new Scanner(System.in); // Creates a scanner that will receive the input from the user 
+    		System.out.println("Please enter your input"); // prompts the user to enter input 
     		String input = newInput.nextLine();
-    		if(input.equals("quit") != true){ // checks if the user types in quit
+    		if(input.indexOf("/0")> 0){ // you can not divide by 0 because the answer will be undefined 
+    			System.out.println("ERROR: Cannot divide by 0");
+    		}
+    		else if(input.indexOf("++") >0) {
+    			System.out.println("ERROR: invalid input"); // Error handling 
+    		} else if(input.indexOf("--")>0) {
+    			System.out.println("ERROR: Invalid input"); // Error handling
+    		} else if(input.indexOf("**")>0) {
+    			System.out.println("ERROR: invalid input"); // Error handling
+    		} else if (input.indexOf("//")> 0){
+    			System.out.println("ERROR: invalid input"); // Error handling
+    		}
+    		if(input.equals("quit") != true){ // checks if the user types in quit, 
     				String answer = produceAnswer(input);
     				System.out.println(answer);
     				System.out.println();
-    				input = newInput.nextLine();
+    				input = newInput.nextLine(); // gets the next input from the user 
     		}
     		else {
-    			newInput.close(); // if the user types in quit, the scanner cloese 
+    			newInput.close(); // if the user types in quit, the scanner closes 
     		}
     	}
 
@@ -36,17 +50,17 @@ public class FracCalc {
     //        
     // The function should return the result of the fraction after it has been calculated
     //      e.g. return ==> "1_1/4"
-    public static String produceAnswer(String input)
+    public static String produceAnswer(String input) // 
     { 
         // TODO: Implement this function to produce the solution to the input
     	if(input.indexOf(' ') == -1){
     		return "incorrect input";
     	}
-    	String [] splitTheSpaces = input.split(" ");
+    	String [] splitTheSpaces = input.split(" "); // splits the input at the space 
         // TODO: Implement this function to produce the solution to the input
-    	String operand1= splitTheSpaces[0];
-    	String operator= splitTheSpaces[1];
-    	String operand2= splitTheSpaces[2];
+    	String operand1= splitTheSpaces[0];  // operand one is before the first space
+    	String operator= splitTheSpaces[1]; // operator is in between the two spaces
+    	String operand2= splitTheSpaces[2]; // second operand is after the second space  
     	
     	int[] placeholder1= parseOperands(operand1);
     	int[] placeholder2= parseOperands(operand2);
@@ -56,27 +70,27 @@ public class FracCalc {
     	if(operator.length() != 1){
     		throw new IllegalArgumentException("ERROR: check if you have have an operator");
     	}
-        if(operator.equals("+")){
+        if(operator.equals("+")){ // checks if operator is a + sign, if it is then it uses addFrac 
         	answer= addFrac((placeholder1),(placeholder2));
-        }else if(operator.equals("-")){
+        }else if(operator.equals("-")){ // checks if operator is a minus sign, then it will use a subtractFrac
         	answer = subtractFrac(placeholder1, placeholder2);
-        }else if(operator.equals("*")){
+        }else if(operator.equals("*")){ // checks if operator is a multiplication sign, then it will use multiplyFrac 
         	answer = multiplyFrac(placeholder1, placeholder2);
-        }else{
+        }else{ // if it is not a multiplication, addition or subtraction sign, then it must be a division sign, then it will use divideFrac 
         	answer= divideFrac(placeholder1, placeholder2);
         		
         }
-	int [] reduceImproperFraction =  reduceFrac(answer);
+	int [] reduceImproperFraction =  reduceFrac(answer); // reduces the answer 
     	
-     	if (reduceImproperFraction[0] == 0 && reduceImproperFraction[1] != 0) { 
+     	if (reduceImproperFraction[0] == 0 && reduceImproperFraction[1] != 0) { // if the whole number is 0 and the numerator is a greater than 0, then it must a fraction  
      		mixednum = reduceImproperFraction[1] + "/" + reduceImproperFraction[2]; 
      	}
-     	else if (reduceImproperFraction[1] == 0) { 
+     	else if (reduceImproperFraction[1] == 0) { // if the numerator is a 0, then the answer will be just the whole number  
      		mixednum = "" + reduceImproperFraction[0];
      	}
-     	else if (reduceImproperFraction[0] == 0 && reduceImproperFraction[0] == 0) { 
+     	else if (reduceImproperFraction[0] == 0 && reduceImproperFraction[1] == 0) { // if the whole number and the numerator are both 0, then the answer is 0
      		mixednum = "0";
-     	}
+    	}
      	else {
      		mixednum = reduceImproperFraction[0] + "_" + reduceImproperFraction[1] + "/" + reduceImproperFraction[2]; //contains whole num, numerator, and denominator all in reduced form
      	}
@@ -85,11 +99,11 @@ public class FracCalc {
         
     }
     
-    public static int gcf(int [] operand) {
+    public static int gcf(int [] operand) { // finds the greatest common factor 
 		int number = 1;
 		int factor = 1;
-		while (number <= Math.min(Math.abs(operand[0]), operand[1])) { 
-			if (Math.abs(operand[0]%number) == 0 && Math.abs(operand[1]%number) ==0) {
+		while (number <= Math.min(Math.abs(operand[0]), operand[1])) { // uses the absolute value because the value might be negative
+			if (Math.abs(operand[0]%number) == 0 && Math.abs(operand[1]%number) ==0) {// checks operand[0] and operand[1] are divisible by the number
 				factor = number; 
 			}
 			number++;
@@ -98,7 +112,7 @@ public class FracCalc {
 	}
     
   
-    public static int[] reduceFrac(int[] operand) {
+    public static int[] reduceFrac(int[] operand) { // reduces the fraction to its most simple form 
     	
     	int [] fractionReduced = new int [3]; 
     	int wholeNum = operand[0]/operand[1];
@@ -107,7 +121,7 @@ public class FracCalc {
     	operand[0] = Math.abs(operand[0]);
     	}
    
-    	int factor = gcf(operand);
+    	int factor = gcf(operand); // takes the greatest common factor of the operand 
     	int numerator = operand[0]/factor;
     	int denominator = Math.abs(operand[1]/factor); 
     			fractionReduced[0] = wholeNum; 
@@ -117,22 +131,22 @@ public class FracCalc {
 
     }
     
-    public static int[] parseOperands(String operand) {
+    public static int[] parseOperands(String operand) { // splits the operand into three parts- whole, numerator, denominator
     	
-    	String[] checkForWholeNum = operand.split("_");
+    	String[] checkForWholeNum = operand.split("_"); // splits the answer at the underscore
 		String[] fraction = checkForWholeNum[checkForWholeNum.length-1].split("/");
 		String[] threePartsOfOperand = new String[3];
-		int underscore = operand.indexOf("_");
-		int slash = operand.indexOf("/");
+		int underscore = operand.indexOf("_"); // sets int underscore to the location of the underscore in operand
+		int slash = operand.indexOf("/");// sets int slash to the location of the slash in the operand
 		threePartsOfOperand[2]="1";
-		int[] operandInt = new int[3];
+		int[] operandInt = new int[3]; //makes an int array with three values
 		if(underscore<0&&slash>=0){
 			threePartsOfOperand[0]="0";
 		}
 		else {
 			threePartsOfOperand[0]=checkForWholeNum[0];
 		}
-		if(slash<0){
+		if(slash<0){ // if there is no slash that means there is no fraction 
 			threePartsOfOperand[1]="0";
 			threePartsOfOperand[2]="1";
 		}
@@ -145,39 +159,38 @@ public class FracCalc {
 		}
 		if(operandInt[0]<0)
 			operandInt[1]=operandInt[1]*-1;
-		int[] improperFraction = toImproperFrac(operandInt[0], operandInt[1], operandInt[2]);
+		int[] improperFraction = toImproperFrac(operandInt[0], operandInt[1], operandInt[2]); // int array to change the values to improper fraction 
 		return improperFraction;
 	}
     
-    public static int[] toImproperFrac(int whole, int numerator, int denominator) {
-		int[] improperFrac=new int[2];
+    public static int[] toImproperFrac(int whole, int numerator, int denominator) { // changes from a mixed fraction to an improper fraction 
+		int[] improperFrac=new int[2]; // makes an int array of two because it will be just the numerator and the denominator 
 		improperFrac[0] = whole * denominator + numerator;
 		improperFrac[1] = denominator;
 		return improperFrac;
     }
     
-	public static int[] addFrac(int[] firstOperand, int[] secondOperand){
+	public static int[] addFrac(int[] firstOperand, int[] secondOperand){ // it adds the fractions if the operator is an addition sign
 		int[] commonden= new int[1];
     	int[] newNum= new int[1];
-    	if(firstOperand[1]==secondOperand[1]){
+    	if(firstOperand[1]==secondOperand[1]){ // checks if the denominators are the same, if they are the same, then it returns the numerator of the first operand added with the numerator of the second operand al divided by the commonDenominator, in this case the first operand's denominator.
     		commonden[0]=firstOperand[1];
     		newNum[0]= firstOperand[0]+secondOperand[0];
-    	}else{
+    	}else{ // if the denominators are not the same, then it returns the two denominators multiplied by each other and the sum of the nueerators. 
     		commonden[0]=firstOperand[1]*secondOperand[1];
     		newNum[0]= firstOperand[0]*secondOperand[1]+secondOperand[0]*firstOperand[1];
-    		
     	}
     	int[] answer= new int[2];
-    	answer[0]= newNum[0];
+    	answer[0]= newNum[0]; //sets the values of the array answer to newNum[0] 
     	answer[1]= commonden[0];
     	
     	return answer;
 	}
 
-    public static int[] subtractFrac(int[] firstOperand, int[] secondOperand) {
-    	int[] answer = new int[2]; 
-    	int[] array = new int[2]; 
-		array[0] = (firstOperand[0]*secondOperand[1])- (firstOperand[1]*secondOperand[0]);	
+    public static int[] subtractFrac(int[] firstOperand, int[] secondOperand) { // subtracts the fractions if the operator is a minus sign
+    	int[] answer = new int[2]; // new inte array with two values
+    	int[] array = new int[2];  // new int array with two values 
+		array[0] = (firstOperand[0]*secondOperand[1]) - (firstOperand[1]*secondOperand[0]);	
 		answer[0] = array[0];
 		answer[1] = firstOperand[1]*secondOperand[1];
 		return answer;
@@ -185,8 +198,8 @@ public class FracCalc {
     
     public static int[] multiplyFrac(int[] firstOperand, int[] secondOperand) {
     	int[] answer = new int[2]; 
-    		answer[0] = (firstOperand[0] * secondOperand[0]);
-    		answer[1] = (firstOperand[1] * secondOperand[1]); 
+    		answer[0] = (firstOperand[0] * secondOperand[0]); //multiplies the numerators of both operands
+    		answer[1] = (firstOperand[1] * secondOperand[1]); // multiplies the denominators of both operands 
     		return answer;
     	}
     	
@@ -197,7 +210,7 @@ public class FracCalc {
     	int denominator = secondOperand[1]; //flip the second operand
     	secondOperand[1] = Math.abs(secondOperand[0]);
     	secondOperand[0] = denominator;  //This way, the negative is always carried on the numerator
-    	int [] answer = multiplyFrac(firstOperand, secondOperand);
+    	int [] answer = multiplyFrac(firstOperand, secondOperand); // basically multiplies the reciprocal of the second operand 
     	return answer;
     }
     
