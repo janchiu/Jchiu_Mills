@@ -18,7 +18,7 @@ public class FracCalc {
     		
     		Scanner newInput = new Scanner(System.in); // Creates a scanner that will receive the input from the user 
     		System.out.println("Please enter your input"); // prompts the user to enter input 
-    		String input = newInput.nextLine(); // gets the next line
+    		String input = newInput.nextLine();
     		if(input.indexOf("/0")> 0){ // you can not divide by 0 because the answer will be undefined 
     			System.out.println("ERROR: Cannot divide by 0");
     		}
@@ -124,9 +124,9 @@ public class FracCalc {
     	int factor = gcf(operand); // takes the greatest common factor of the operand 
     	int numerator = operand[0]/factor;
     	int denominator = Math.abs(operand[1]/factor); 
-    			fractionReduced[0] = wholeNum; // set value in the array
-    			fractionReduced[1] = numerator; // set value in the array	
-    			fractionReduced[2] = denominator; // set value in the array 
+    			fractionReduced[0] = wholeNum; 
+    			fractionReduced[1] = numerator;
+    			fractionReduced[2] = denominator; 
     		return fractionReduced; 
 
     }
@@ -140,7 +140,7 @@ public class FracCalc {
 		int slash = operand.indexOf("/");// sets int slash to the location of the slash in the operand
 		threePartsOfOperand[2]="1";
 		int[] operandInt = new int[3]; //makes an int array with three values
-		if(underscore<0 &&slash>=0){
+		if(underscore<0&&slash>=0){
 			threePartsOfOperand[0]="0";
 		}
 		else {
@@ -155,7 +155,7 @@ public class FracCalc {
 			threePartsOfOperand[2]=fraction[1];
 		}
 		for(int i=0; i <threePartsOfOperand.length; i++){
-			operandInt[i]=Integer.parseInt(threePartsOfOperand[i]);// changes it from a string to int 
+			operandInt[i]=Integer.parseInt(threePartsOfOperand[i]);
 		}
 		if(operandInt[0]<0)
 			operandInt[1]=operandInt[1]*-1;
@@ -171,24 +171,24 @@ public class FracCalc {
     }
     
 	public static int[] addFrac(int[] firstOperand, int[] secondOperand){ // it adds the fractions if the operator is an addition sign
-		int[] commonDen= new int[1];
+		int[] commonden= new int[1];
     	int[] newNum= new int[1];
     	if(firstOperand[1]==secondOperand[1]){ // checks if the denominators are the same, if they are the same, then it returns the numerator of the first operand added with the numerator of the second operand al divided by the commonDenominator, in this case the first operand's denominator.
-    		commonDen[0]=firstOperand[1];
+    		commonden[0]=firstOperand[1];
     		newNum[0]= firstOperand[0]+secondOperand[0];
     	}else{ // if the denominators are not the same, then it returns the two denominators multiplied by each other and the sum of the nueerators. 
-    		commonDen[0]=firstOperand[1]*secondOperand[1];
+    		commonden[0]=firstOperand[1]*secondOperand[1];
     		newNum[0]= firstOperand[0]*secondOperand[1]+secondOperand[0]*firstOperand[1];
     	}
     	int[] answer= new int[2];
     	answer[0]= newNum[0]; //sets the values of the array answer to newNum[0] 
-    	answer[1]= commonDen[0];
+    	answer[1]= commonden[0];
     	
     	return answer;
 	}
 
     public static int[] subtractFrac(int[] firstOperand, int[] secondOperand) { // subtracts the fractions if the operator is a minus sign
-    	int[] answer = new int[2]; // new int array with two values
+    	int[] answer = new int[2]; // new inte array with two values
     	int[] array = new int[2];  // new int array with two values 
 		array[0] = (firstOperand[0]*secondOperand[1]) - (firstOperand[1]*secondOperand[0]);	
 		answer[0] = array[0];
